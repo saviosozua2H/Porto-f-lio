@@ -549,7 +549,7 @@
     color: rgba(245,240,232,0.45);
   }
 
-  /* ─── PORTFOLIO PLACEHOLDER ─── */
+  /* ─── CASES ─── */
   .portfolio {
     border-top: 1px solid rgba(245,240,232,0.08);
     padding-bottom: 80px;
@@ -557,67 +557,171 @@
   .portfolio-header {
     margin-bottom: 64px;
   }
-  .portfolio-grid {
+  .cases-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
+    gap: 24px;
   }
-  .portfolio-item {
-    aspect-ratio: 4/3;
+  .case-card {
     background: var(--cinza-claro);
-    position: relative;
+    border: 1px solid rgba(245,240,232,0.06);
     overflow: hidden;
+    transition: transform 0.3s ease, border-color 0.3s;
+    display: flex;
+    flex-direction: column;
+  }
+  .case-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(201,168,76,0.3);
+  }
+  .case-thumb {
+    aspect-ratio: 16/9;
+    background: #111;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
-    gap: 12px;
+    position: relative;
+    overflow: hidden;
   }
-  .portfolio-item::after {
-    content: '';
+  .case-thumb-icon {
+    font-size: 3rem;
+    opacity: 0.2;
+  }
+  .case-play {
     position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
-    opacity: 0;
-    transition: opacity 0.4s;
+    width: 56px; height: 56px;
+    background: rgba(201,168,76,0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    transition: transform 0.3s, background 0.3s;
   }
-  .portfolio-item:hover::after { opacity: 1; }
-
-  .portfolio-item-inner {
-    text-align: center;
-    color: rgba(245,240,232,0.2);
+  .case-card:hover .case-play {
+    transform: scale(1.1);
+    background: var(--dourado);
   }
-  .portfolio-item-inner p {
-    font-size: 0.65rem;
-    letter-spacing: 0.18em;
+  .case-body {
+    padding: 28px 28px 32px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .case-cat {
+    font-size: 0.6rem;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
+    color: var(--dourado);
+    font-family: 'DM Mono', monospace;
+    margin-bottom: 12px;
+  }
+  .case-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    line-height: 1.3;
+    margin-bottom: 12px;
+  }
+  .case-desc {
+    font-size: 0.85rem;
+    line-height: 1.65;
+    color: rgba(245,240,232,0.45);
+    flex: 1;
+    margin-bottom: 24px;
+  }
+  .case-result {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    background: rgba(201,168,76,0.07);
+    border-left: 2px solid var(--dourado);
+    font-size: 0.78rem;
+    color: rgba(245,240,232,0.7);
+    margin-bottom: 24px;
+  }
+  .case-result strong { color: var(--dourado); }
+  .case-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--dourado);
+    text-decoration: none;
+    font-family: 'DM Mono', monospace;
+    transition: gap 0.3s;
+  }
+  .case-link:hover { gap: 14px; }
+
+  @media (max-width: 768px) {
+    .cases-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ─── METODOLOGIA ─── */
+  .metodologia {
+    border-top: 1px solid rgba(245,240,232,0.08);
+    background: linear-gradient(to bottom, rgba(201,168,76,0.03), transparent);
+  }
+  .metodo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-top: 64px;
+  }
+  .metodo-card {
+    padding: 48px 44px;
+    background: var(--cinza-claro);
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+  }
+  .metodo-card:hover { background: #1e1e1e; }
+  .metodo-card.destaque {
+    background: rgba(201,168,76,0.06);
+    border: 1px solid rgba(201,168,76,0.18);
+    grid-column: span 2;
+  }
+  .metodo-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--dourado);
+    letter-spacing: 0.22em;
+    margin-bottom: 20px;
+  }
+  .metodo-icon {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    display: block;
+  }
+  .metodo-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    margin-bottom: 14px;
+    line-height: 1.3;
+  }
+  .metodo-desc {
+    font-size: 0.88rem;
+    line-height: 1.75;
+    color: rgba(245,240,232,0.5);
+  }
+  .metodo-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    padding: 6px 14px;
+    border: 1px solid rgba(201,168,76,0.3);
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--dourado);
     font-family: 'DM Mono', monospace;
   }
-  .portfolio-item-inner .p-icon {
-    font-size: 2rem;
-    margin-bottom: 12px;
-    opacity: 0.3;
-  }
-  .portfolio-item-label {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    z-index: 2;
-    opacity: 0;
-    transition: opacity 0.4s;
-  }
-  .portfolio-item:hover .portfolio-item-label { opacity: 1; }
-  .portfolio-item-label span {
-    font-size: 0.7rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--marfim);
-  }
-
-  /* large first item */
-  .portfolio-item.large {
-    grid-column: span 2;
-    aspect-ratio: 8/4;
+  @media (max-width: 768px) {
+    .metodo-grid { grid-template-columns: 1fr; }
+    .metodo-card.destaque { grid-column: span 1; }
   }
 
   /* ─── PROCESSO ─── */
@@ -862,12 +966,12 @@
   <div class="hero-content">
     <div class="hero-tag">Produção Audiovisual</div>
     <h1 class="hero-title">
-      <span class="line"><span>Todo show</span></span>
-      <span class="line"><span>tem <em>duas</em></span></span>
-      <span class="line"><span>vidas.</span></span>
+      <span class="line"><span>Seu trabalho</span></span>
+      <span class="line"><span>merece ser <em>visto</em></span></span>
+      <span class="line"><span>de verdade.</span></span>
     </h1>
     <p class="hero-desc">
-      A que acontece no palco — e a que fica pra sempre na tela. Eu cuido da segunda com a mesma intensidade que você coloca na primeira.
+      De casamentos a cursos online, de shows a imóveis de alto padrão — eu transformo o que você faz em vídeo que gera resultado, impacto e memória.
     </p>
     <div class="hero-cta-group">
       <a href="#contato" class="btn-primary"><span>Vamos conversar</span></a>
@@ -897,12 +1001,12 @@
 
   <div class="sobre-content">
     <div class="section-tag reveal">Quem está por trás da câmera</div>
-    <h2 class="section-title reveal reveal-delay-1">Eu não apenas <em style="font-style:italic;color:var(--dourado)">registro</em>.<br>Eu conto histórias.</h2>
+    <h2 class="section-title reveal reveal-delay-1">Não é só um vídeo.<br>É uma <em style="font-style:italic;color:var(--dourado)">equipe inteira</em> pelo seu resultado.</h2>
     <p class="sobre-text reveal reveal-delay-2">
-      Sou Sávio Souza, produtor audiovisual de Betim/MG. Trabalho com artistas, casas de show, profissionais liberais e empreendedores que querem que seu trabalho seja visto do jeito que merece — com qualidade, identidade e narrativa.
+      Sou Sávio Souza, produtor audiovisual e criador da <strong style="color:var(--marfim)">Sávio Souza & Equipe</strong> — uma estrutura completa de marketing visual baseada em Betim/MG. Aqui você não contrata só um videomaker: tem por trás uma equipe que entende de posicionamento, identidade visual, social mídia e conteúdo estratégico.
     </p>
     <p class="sobre-text reveal reveal-delay-3">
-      De shows ao vivo a vídeos para Instagram, cursos online e registros de serviços, meu trabalho é transformar o que você faz em algo que as pessoas não esquecem.
+      Já entregamos casamentos, cursos online, coberturas de show, vídeos imobiliários e gestão de redes sociais para profissionais de saúde, beleza, mercado imobiliário e muito mais. Do roteiro à entrega final, cuidamos de tudo.
     </p>
 
     <div class="sobre-stats">
@@ -915,8 +1019,8 @@
         <span class="stat-label">projetos entregues</span>
       </div>
       <div class="reveal reveal-delay-3">
-        <span class="stat-num">∞</span>
-        <span class="stat-label">histórias pra contar</span>
+        <span class="stat-num">360°</span>
+        <span class="stat-label">marketing visual</span>
       </div>
     </div>
   </div>
@@ -1064,49 +1168,138 @@
 <!-- PORTFOLIO -->
 <section class="portfolio" id="portfolio">
   <div class="portfolio-header">
-    <div class="section-tag reveal">Trabalhos</div>
+    <div class="section-tag reveal">Cases reais</div>
     <h2 class="section-title reveal reveal-delay-1">Portfólio</h2>
     <p class="reveal reveal-delay-2" style="color:rgba(245,240,232,0.4);font-size:0.85rem;margin-top:12px;letter-spacing:0.05em;">
-      Adicione suas fotos e vídeos aqui para mostrar seus melhores trabalhos.
+      Resultados reais. Clientes reais. Vídeos que geram impacto.
     </p>
   </div>
 
-  <div class="portfolio-grid">
-    <div class="portfolio-item large reveal">
-      <div class="portfolio-item-inner">
-        <div class="p-icon">🎬</div>
-        <p>Imagem destaque</p>
+  <div class="cases-grid">
+
+    <!-- Case 1: Laura -->
+    <div class="case-card reveal">
+      <div class="case-thumb">
+        <div class="case-thumb-icon">🎓</div>
+        <div class="case-play">▶</div>
       </div>
-      <div class="portfolio-item-label"><span>Show / Evento Principal</span></div>
-    </div>
-    <div class="portfolio-item reveal reveal-delay-1">
-      <div class="portfolio-item-inner">
-        <div class="p-icon">📸</div>
-        <p>Projeto 02</p>
+      <div class="case-body">
+        <div class="case-cat">Gravação de Curso</div>
+        <div class="case-title">Laura Guimarães — Cílios</div>
+        <p class="case-desc">Produção completa de curso online para profissional de cílios. Iluminação, áudio e edição profissional prontos para publicar na plataforma.</p>
+        <a href="https://www.instagram.com/lauraguimaraescilios?igsh=MWozdjZiYW0yanlsZA==" target="_blank" class="case-link">Ver perfil no Instagram →</a>
       </div>
-      <div class="portfolio-item-label"><span>Profissional Liberal</span></div>
     </div>
-    <div class="portfolio-item reveal reveal-delay-1">
-      <div class="portfolio-item-inner">
-        <div class="p-icon">🎵</div>
-        <p>Projeto 03</p>
+
+    <!-- Case 2: Imobiliária -->
+    <div class="case-card reveal reveal-delay-1">
+      <div class="case-thumb">
+        <div class="case-thumb-icon">🏠</div>
+        <div class="case-play">▶</div>
       </div>
-      <div class="portfolio-item-label"><span>Artista / Banda</span></div>
-    </div>
-    <div class="portfolio-item reveal reveal-delay-2">
-      <div class="portfolio-item-inner">
-        <div class="p-icon">🏢</div>
-        <p>Projeto 04</p>
+      <div class="case-body">
+        <div class="case-cat">Case Imobiliário</div>
+        <div class="case-title">Vídeo que gerou 2+ propostas</div>
+        <p class="case-desc">Vídeo de apresentação de imóvel de alto padrão que gerou mais de duas propostas em um imóvel avaliado em R$ 2.200.000,00.</p>
+        <div class="case-result"><strong>+2 propostas</strong> em imóvel de R$ 2,2 milhões</div>
+        <a href="https://www.instagram.com/reel/DYNuCczSlHl/?igsh=MXZva2o1cGxmNXFmOA==" target="_blank" class="case-link">Ver vídeo no Instagram →</a>
       </div>
-      <div class="portfolio-item-label"><span>Imobiliária</span></div>
     </div>
-    <div class="portfolio-item reveal reveal-delay-3">
-      <div class="portfolio-item-inner">
-        <div class="p-icon">🎓</div>
-        <p>Projeto 05</p>
+
+    <!-- Case 3: Show -->
+    <div class="case-card reveal reveal-delay-2">
+      <div class="case-thumb">
+        <div class="case-thumb-icon">🎸</div>
+        <div class="case-play">▶</div>
       </div>
-      <div class="portfolio-item-label"><span>Curso Online</span></div>
+      <div class="case-body">
+        <div class="case-cat">Cobertura de Show</div>
+        <div class="case-title">Pós-cobertura — Show ao Vivo</div>
+        <p class="case-desc">Vídeo completo de pós-cobertura de show. Captação ao vivo, edição dinâmica e entrega final que eterniza a energia do palco.</p>
+        <a href="https://www.instagram.com/reel/DX_1ri9vUi9/?igsh=MXdqYWNrdTEzczByZw==" target="_blank" class="case-link">Ver vídeo no Instagram →</a>
+      </div>
     </div>
+
+    <!-- Case 4: Casamento -->
+    <div class="case-card reveal">
+      <div class="case-thumb">
+        <div class="case-thumb-icon">💍</div>
+        <div class="case-play">▶</div>
+      </div>
+      <div class="case-body">
+        <div class="case-cat">Casamento Civil</div>
+        <div class="case-title">Registro de Casamento</div>
+        <p class="case-desc">Cobertura completa de casamento civil — foto e vídeo. Memória que fica para sempre, produzida com cuidado e emoção do início ao fim.</p>
+        <a href="https://www.instagram.com/reel/DVG8g_Okd5t/?igsh=OWcxaTNmdTk3Y3k2" target="_blank" class="case-link">Ver vídeo no Instagram →</a>
+      </div>
+    </div>
+
+    <!-- Case 5: Lorena Amaral -->
+    <div class="case-card reveal reveal-delay-1">
+      <div class="case-thumb">
+        <div class="case-thumb-icon">🐾</div>
+        <div class="case-play">▶</div>
+      </div>
+      <div class="case-body">
+        <div class="case-cat">Social Mídia & Conteúdo</div>
+        <div class="case-title">Lorena Amaral — Veterinária</div>
+        <p class="case-desc">Gestão completa de redes sociais para médica veterinária. Produção de conteúdo, identidade visual e posicionamento digital com estratégia.</p>
+        <a href="https://www.instagram.com/lorena_amaralc?igsh=ZnA4Z3Vva3N6MWx6" target="_blank" class="case-link">Ver perfil no Instagram →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- METODOLOGIA -->
+<section class="metodologia" id="metodologia">
+  <div class="section-tag reveal">O que nos diferencia</div>
+  <h2 class="section-title reveal reveal-delay-1">Método <em style="font-style:italic;color:var(--dourado)">Presença Real</em></h2>
+  <p class="reveal reveal-delay-2" style="color:rgba(245,240,232,0.5);font-size:1rem;line-height:1.7;max-width:580px;margin-top:16px;">
+    Antes de gravar qualquer vídeo ou publicar qualquer conteúdo, entendemos quem você é de verdade. É isso que separa um conteúdo comum de um conteúdo que posiciona.
+  </p>
+
+  <div class="metodo-grid">
+
+    <div class="metodo-card reveal">
+      <div class="metodo-num">01</div>
+      <span class="metodo-icon">🧠</span>
+      <div class="metodo-title">Psicologia & Identidade de Marca</div>
+      <p class="metodo-desc">Usando psicologia aplicada e a metodologia dos arquétipos de marca, mapeamos a personalidade real do seu negócio — arquétipo dominante, secundário, tom de voz, postura e jeito de se posicionar na internet.</p>
+      <div class="metodo-badge">Arquétipos de marca</div>
+    </div>
+
+    <div class="metodo-card reveal reveal-delay-1">
+      <div class="metodo-num">02</div>
+      <span class="metodo-icon">🎨</span>
+      <div class="metodo-title">Identidade Visual & Paleta</div>
+      <p class="metodo-desc">Com a personalidade traçada, definimos a paleta de cores, tipografia, estética visual e todos os elementos que fazem seu conteúdo ser reconhecível e consistente em qualquer plataforma.</p>
+      <div class="metodo-badge">Design estratégico</div>
+    </div>
+
+    <div class="metodo-card reveal reveal-delay-2">
+      <div class="metodo-num">03</div>
+      <span class="metodo-icon">📋</span>
+      <div class="metodo-title">Estratégia Editorial</div>
+      <p class="metodo-desc">Criamos um planejamento de conteúdo alinhado à sua personalidade e aos seus objetivos — o que falar, quando falar e como falar para atrair o cliente certo e construir autoridade no seu nicho.</p>
+      <div class="metodo-badge">Conteúdo com intenção</div>
+    </div>
+
+    <div class="metodo-card reveal reveal-delay-3">
+      <div class="metodo-num">04</div>
+      <span class="metodo-icon">🎬</span>
+      <div class="metodo-title">Produção Audiovisual</div>
+      <p class="metodo-desc">Com toda a identidade e estratégia definidas, produzimos os vídeos, fotos e materiais visuais com qualidade profissional — tudo alinhado ao posicionamento construído nas etapas anteriores.</p>
+      <div class="metodo-badge">Vídeo com propósito</div>
+    </div>
+
+    <div class="metodo-card destaque reveal">
+      <div class="metodo-num">Resultado</div>
+      <span class="metodo-icon">✨</span>
+      <div class="metodo-title">Presença digital que gera <em style="font-style:italic;color:var(--dourado)">resultado real.</em></div>
+      <p class="metodo-desc">Não entregamos só vídeos bonitos. Entregamos um posicionamento completo — onde cada peça de conteúdo tem intenção, cada vídeo comunica quem você é e cada publicação trabalha pelo seu crescimento. É isso que chamamos de Presença Real.</p>
+    </div>
+
   </div>
 </section>
 
